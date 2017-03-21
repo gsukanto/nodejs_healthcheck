@@ -1,0 +1,68 @@
+{
+  "name": "nodejs_healthcheck",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Nodejs health check made by Gregory Sukanto",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node -- .",
+    "clean": "yarn cache clean && npm cache clean && rm -fr node_modules",
+    "test": "mocha --compilers js:babel-core/register ./app/**/*.spec.js",
+    "test:debug": "mocha --compilers js:babel-core/register --debug-brk --inspect ./app/**/*.spec.js",
+    "dev": "NODE_ENV=development nodemon .",
+    "windev": "set NODE_ENV=development && npm run nodemon",
+    "nodemon": "nodemon --exec babel-node --inspect -- .",
+    "cov": "nyc --report-dir ./artifacts/coverage --reporter=html --reporter=text --reporter=lcov _mocha --compilers js:babel-core/register ./app/**/*.spec.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "flow": "flow check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:gsukanto/nodejs_healthcheck.git"
+  },
+  "author": "Gregory Sukanto",
+  "bugs": {
+    "url": "https://github.com/gsukanto/nodejs_healthcheck/issues"
+  },
+  "homepage": "https://github.com/gsukanto/nodejs_healthcheck#readme",
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "eslint": "^3.18.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-flowtype": "^2.30.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
+    "flow-bin": "^0.39.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0",
+    "nyc": "^10.1.2",
+    "sinon": "^1.17.7",
+    "supertest": "^3.0.0"
+  },
+  "dependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.23.0",
+    "babel-preset-env": "^1.1.8",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-latest": "^6.22.0",
+    "babel-register": "^6.23.0",
+    "hapi": "^16.1.0",
+    "hapi-swagger": "^7.6.0",
+    "inert": "^4.1.0",
+    "joi": "^10.2.2",
+    "vision": "^4.1.1",
+    "winston": "^2.3.1"
+  },
+  "nyc": {
+    "exclude": [
+      "**/*.spec.js"
+    ]
+  }
+}
