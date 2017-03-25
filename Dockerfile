@@ -5,7 +5,7 @@ RUN mkdir -p /app/healthcheck
 WORKDIR /app/healthcheck
 
 ADD . .
-RUN npm install --production --quiet
+RUN npm install
 
 # We need to disable the babel cache, see:
 # http://stackoverflow.com/questions/32757306/why-babel-stores-babel-json-in-userprofile-path/34025957#34025957
@@ -18,4 +18,4 @@ ENV PORT 3000
 EXPOSE 3000
 
 # Most Dockerfiles really should only run a single process...
-CMD ["npm", "start", "-s"]
+CMD ["npm", "start"]
